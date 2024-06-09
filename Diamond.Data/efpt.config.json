@@ -1,0 +1,73 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "Net1814_212_3_DianContext",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "Diamond.Data",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[COMPANY]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CUSTOMER]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DIAMOND]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ORDERDETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ORDERS]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PRODUCTCATEGORY]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PROMOTION]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SHELL]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

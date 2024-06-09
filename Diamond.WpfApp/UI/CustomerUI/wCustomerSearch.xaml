@@ -1,0 +1,123 @@
+﻿<Window x:Class="Diamond.WpfApp.UI.ProductCategoryUI.wProductCategorySearch"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diamond.WpfApp.UI"
+        mc:Ignorable="d"
+        Title="Product Category" Height="450" Width="1220">
+    <Window.Resources>
+        <DataTemplate x:Key="GroupBoxHeaderTemplate">
+            <TextBlock Text="{Binding}" Foreground="CadetBlue" FontSize="18" FontWeight="Bold"/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <GroupBox Header="Product Category Form" HeaderTemplate="{StaticResource GroupBoxHeaderTemplate}" Margin="10">
+                <Grid Height="140">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Row 0 -->
+                    <Label Content="CategoryId" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Right"  Width="120"  VerticalContentAlignment="Center"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="CategoryId" Height="25" Text="{Binding Path=Productcategory.CategoryId, Mode=TwoWay}" Margin="5" Width="160" HorizontalAlignment="Left"/>
+                    <Label Content="Name" Grid.Column="2" Grid.Row="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="120"/>
+                    <TextBox Grid.Row="0" Grid.Column="3" x:Name="Name" Height="25" Text="{Binding Path=Productcategory.Name, Mode=TwoWay}" Margin="5" Width="160" HorizontalAlignment="Left"/>
+                    <Label Content="Description" Grid.Column="4" Grid.Row="0" HorizontalContentAlignment="Right"  VerticalContentAlignment="Center" Width="120"/>
+                    <TextBox Grid.Row="0" Grid.Column="5" x:Name="Description" Height="25" Text="{Binding Path=Productcategory.Description, Mode=TwoWay}" Margin="5" Width="160" HorizontalAlignment="Left"/>
+                    <Label Content="IsFeatured" Grid.Column="6" Grid.Row="0" HorizontalContentAlignment="Right"  VerticalContentAlignment="Center" Width="120"/>
+                    <RadioButton Grid.Row="0" Grid.Column="7" x:Name="FeatureTrue" GroupName="IsFeatured" Height="25"  Command="{Binding Path=Productcategory.IsFeatured, Mode=TwoWay}" Margin="5" Width="50" HorizontalAlignment="Left" VerticalContentAlignment="Center">
+                        Yes
+                    </RadioButton>
+                    <RadioButton Grid.Row="0" Grid.Column="7" x:Name="FeatureFalse" GroupName="IsFeatured" Height="25"  Command="{Binding Path=Productcategory.IsFeatured, Mode=TwoWay}" Margin="50,0,0,0" Width="50" HorizontalAlignment="Right" VerticalContentAlignment="Center">
+                        No
+                    </RadioButton>
+
+                    <!-- Row 1 -->
+                    <Label Content="IconUrl" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Right"  Width="120"  VerticalContentAlignment="Center"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="IconUrl" Height="25" Text="{Binding Path=Productcategory.IconUrl, Mode=TwoWay}" Margin="5" Width="160" HorizontalAlignment="Left"/>
+                    <Label Content="ImageUrl" Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="120"/>
+                    <TextBox Grid.Row="1" Grid.Column="3" x:Name="PromotionImageUrl" Height="25" Text="{Binding Path=Productcategory.Name, Mode=TwoWay}" Margin="5" Width="160" HorizontalAlignment="Left"/>
+                    <Label Content="Tagline" Grid.Column="4" Grid.Row="1" HorizontalContentAlignment="Right"  VerticalContentAlignment="Center" Width="120"/>
+                    <TextBox Grid.Row="1" Grid.Column="5" x:Name="PromotionalTagline" Height="25" Text="{Binding Path=Productcategory.PromotionalTagline, Mode=TwoWay}" Margin="5" Width="160" HorizontalAlignment="Left"/>
+                    <Label Content="ProductAmount" Grid.Column="6" Grid.Row="1" HorizontalContentAlignment="Right"  VerticalContentAlignment="Center" Width="120"/>
+                    <TextBox Grid.Row="1" Grid.Column="7" x:Name="ProductAmount" Height="25" Text="{Binding Path=Productcategory.PromotionalTagline, Mode=TwoWay}" Margin="5" Width="160" HorizontalAlignment="Left"/>
+
+                    <!-- Row 2 -->
+                    <Label Content="Instruction" Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Right"  Width="120"  VerticalContentAlignment="Center"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="CareInstruction" Height="25" Text="{Binding Path=Productcategory.CareInstruction, Mode=TwoWay}" Margin="5" Width="160" HorizontalAlignment="Left"/>
+                    <Label Content="MaxPrice" Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="120"/>
+                    <TextBox Grid.Row="2" Grid.Column="3" x:Name="MaximumPrice" Height="25" Text="{Binding Path=Productcategory.Name, Mode=TwoWay}" Margin="5" Width="160" HorizontalAlignment="Left"/>
+                    <Label Content="MinPrice" Grid.Column="4" Grid.Row="2" HorizontalContentAlignment="Right"  VerticalContentAlignment="Center" Width="120"/>
+                    <TextBox Grid.Row="2" Grid.Column="5" x:Name="MinimumPrice" Height="25" Text="{Binding Path=Productcategory.PromotionalTagline, Mode=TwoWay}" Margin="5" Width="160" HorizontalAlignment="Left"/>
+
+                </Grid>
+            </GroupBox>
+            <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="ButtonSearch" Content="Search" Height="30" Width="80" 
+                Command="{Binding SaveCommand}" Click="ButtonSearch_Click" Background="Green" Foreground="White" />
+                <Button x:Name="ButtonCancel" Content="Cancel" Height="30" Width="80" 
+                Command="{Binding ResetCommand}" Margin="5,0,10,0" Click="ButtonCancel_Click" RenderTransformOrigin="0.718,10.343"/>
+            </StackPanel>
+            <StackPanel Height="310">
+                <DataGrid x:Name="grdProductCategory" AutoGenerateColumns="False" ItemsSource="{Binding Productcategory}" 
+                 CanUserAddRows="False" Height="310"                         MouseDoubleClick="grdProductCategory_MouseDouble_Click" SelectionMode="Single" SelectionUnit="FullRow"
+                    >
+                    <!--SelectionChanged="grdProductCategory_SelectionChanged"-->
+                    <UIElement.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </UIElement.RenderTransform>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding CategoryId}"  Width="40" Visibility="Visible"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="80" />
+                        <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="120" />
+                        <DataGridTextColumn Header="IsFeatured" Binding="{Binding IsFeatured}" Width="70" />
+                        <DataGridTextColumn Header="IconUrl" Binding="{Binding IconUrl}" Width="120" />
+                        <DataGridTextColumn Header="ImageUrl" Binding="{Binding PromotionImageUrl}" Width="120" />
+                        <DataGridTextColumn Header="Tagline" Binding="{Binding PromotionalTagline}" Width="120" />
+                        <DataGridTextColumn Header="Amount" Binding="{Binding ProductAmount}" Width="70" />
+                        <DataGridTextColumn Header="Instruction" Binding="{Binding CareInstructions}" Width="120" />
+                        <DataGridTextColumn Header="MaxPrice" Binding="{Binding MaximumPrice}" Width="120" />
+                        <DataGridTextColumn Header="MinPrice" Binding="{Binding MinimumPrice}" Width="120" />
+
+                        <DataGridTemplateColumn Width="50">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Background="CadetBlue" Foreground="White" Content="View" x:Name="ButtonReport" CommandParameter="{Binding Path=CategoryId}" Click="grdProductCategory_ButtonReport_Click"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="50">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Background="Red" Foreground="White" Content="X" x:Name="ButtonDelete" CommandParameter="{Binding Path=CategoryId}" Click="grdProductCategory_ButtonDelete_Click"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

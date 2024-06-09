@@ -1,0 +1,135 @@
+﻿<Window x:Class="Diamond.WpfApp.UI.OrderDetailUI.wOrderDetailReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diamond.WpfApp.UI.OrderDetailUI"
+        mc:Ignorable="d"
+        Title="wOrderDetailReport" Height="600" Width="450">
+    <Window.Resources>
+        <DataTemplate x:Key="GroupBoxHeaderTemplate" >
+            <TextBlock Text="{Binding}" Foreground="CadetBlue" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <GroupBox Header="Order Detail Report" HeaderTemplate="{StaticResource GroupBoxHeaderTemplate}" HorizontalContentAlignment="Center" Margin="20" Width="300">
+                <Grid Height="450">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="OrderDetailId" Grid.Column="0" Grid.Row="0" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center"/>
+
+                    <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
+                        <TextBlock Name="OrderDetailId" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
+
+                    <Label Content="OrderId" Grid.Column="0" Grid.Row="1" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+
+                    <StackPanel Grid.Column="1" Grid.Row="1"   VerticalAlignment="Center">
+                        <TextBlock Name="OrderId" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
+
+                    <Label Content="MainDiamondId" Grid.Column="0" Grid.Row="2" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+
+                    <StackPanel Grid.Column="1" Grid.Row="2"  VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <TextBlock Name="MainDiamondId" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="200" MaxHeight="40"/>
+                    </StackPanel>
+
+                    <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
+
+                    <Label Content="ShellId" Grid.Column="0" Grid.Row="3" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+
+                    <StackPanel Grid.Column="1" Grid.Row="3"   VerticalAlignment="Center">
+                        <TextBlock Name="ShellId" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="3" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
+
+                    <!--seperate-->
+                    <Label Content="SubDiamondId" Grid.Column="0" Grid.Row="4" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+
+                    <StackPanel Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" >
+                        <TextBlock Name="SubDiamondId" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="200" MaxHeight="150"/>
+                    </StackPanel>
+
+                    <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="4" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
+
+                    <Label Content="LineTotal" Grid.Column="0" Grid.Row="5" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+
+                    <StackPanel Grid.Column="1" Grid.Row="5"   VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <TextBlock Name="LineTotal" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="200" MaxHeight="40"/>
+                    </StackPanel>
+
+
+                    <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="5" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
+
+                    <Label Content="Quantity" Grid.Column="0" Grid.Row="6" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+
+                    <StackPanel Grid.Column="1" Grid.Row="6" MaxHeight="150"  VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <TextBlock Name="Quantity" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="200" MaxHeight="40"/>
+                    </StackPanel>
+
+
+                    <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="6" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
+
+                    <Label Content="UnitWeight" Grid.Column="0" Grid.Row="7" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+
+                    <StackPanel Grid.Column="1" Grid.Row="7"   VerticalAlignment="Center">
+                        <TextBlock Name="UnitWeight" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="7" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
+
+                    <!--seperate-->
+                    <Label Content="UnitPrice" Grid.Column="0" Grid.Row="8" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+
+                    <StackPanel Grid.Column="1" Grid.Row="8"   VerticalAlignment="Center">
+                        <TextBlock Name="UnitPrice" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="8" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
+
+                    <Label Content="DiscountPercentage" Grid.Column="0" Grid.Row="9" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+
+                    <StackPanel Grid.Column="1" Grid.Row="9" MaxHeight="150"  VerticalAlignment="Center">
+                        <TextBlock Name="DiscountPercentage" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="9" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
+
+                    <Label Content="Note" Grid.Column="0" Grid.Row="10" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+
+                    <StackPanel Grid.Column="1" Grid.Row="10"   VerticalAlignment="Center">
+                        <TextBlock Name="Note" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                </Grid>
+
+            </GroupBox>
+            <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="ButtonCancel" Content="Close" Height="25" Width="80"
+Command="{Binding ResetCommand}" Click="ButtonClose_Click" RenderTransformOrigin="0.718,10.343"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
