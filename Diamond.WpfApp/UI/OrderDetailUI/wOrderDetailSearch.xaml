@@ -73,9 +73,9 @@
             </StackPanel>
             <StackPanel Height="310">
                 <DataGrid x:Name="grdOrderDetail" AutoGenerateColumns="False" ItemsSource="{Binding Orderdetail}" 
-                 CanUserAddRows="False" Height="310"                         MouseDoubleClick="grdProductCategory_MouseDouble_Click" SelectionMode="Single" SelectionUnit="FullRow"
+                 CanUserAddRows="False" Height="310"                         MouseDoubleClick="grdOrderDetail_MouseDouble_Click" SelectionMode="Single" SelectionUnit="FullRow"
                     >
-                    <!--SelectionChanged="grdProductCategory_SelectionChanged"-->
+                    <!--SelectionChanged="grdOrderDetail_SelectionChanged"-->
                     <UIElement.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>

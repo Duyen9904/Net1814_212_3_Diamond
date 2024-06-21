@@ -23,7 +23,7 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 			try
 			{
 
-				var category = new Orderdetail()
+				var orderdetail = new Orderdetail()
 				{
                     OrderDetailId = txtOrderDetailId.Text,
                     OrderId = txtOrderId.Text,
@@ -40,7 +40,7 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 
 
 				//var result = await _business.SearchByFields(categoryId, name, description, iconUrl, promotionImageUrl, promotionalTagline, careInstructions, maximumPrice, minimumPrice);
-				var result = await _business.SearchByFields(category);
+				var result = await _business.SearchByFields(orderdetail);
 				MessageBox.Show(result.Message, "Save");
 
 				this.LoadGrdOrderDetail(result.Data as List<Orderdetail>);
@@ -110,12 +110,12 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 		private async void ButtonUpdate_Click(object sender, RoutedEventArgs e)
 		{
 			// Lấy thông tin từ các TextBox
-			Orderdetail updatedCategory = _business.GetById(OrderDetailId.Text).Result.Data as Orderdetail;
-			updatedCategory.Quantity = Quantity.Text;
+			Orderdetail updatedOrderDetail = await _business.GetById(OrderetailId.Text)).Result.Data as Orderdetail;
+            updatedOrderDetail.Quantity = Quantity.Text;
 			try
 			{
 				// Gọi phương thức Update trong lớp business để cập nhật dữ liệu
-				var result = await _business.Update(updatedCategory);
+				var result = await _business.Update(updatedOrderDetail);
 				MessageBox.Show(result.Message, "Update");
 
 				// Làm mới DataGrid để hiển thị dữ liệu mới
@@ -201,15 +201,15 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 
 			if (result.Status > 0 && result.Data != null)
 			{
-				grdOrderDetail.ItemsSource = result.Data as List<Productcategory>;
+				grdOrderDetail.ItemsSource = result.Data as List<Orderdetail>;
 			}
 			else
 			{
-				grdOrderDetail.ItemsSource = new List<Productcategory>();
+				grdOrderDetail.ItemsSource = new List<Orderdetail>();
 			}
 		}
 
-		private async void LoadGrdOrderDetail(List<Productcategory> list)
+		private async void LoadGrdOrderDetail(List<Orderdetail> list)
 		{
 			if (list.Count > 0)
 			{
@@ -217,7 +217,7 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 			}
 			else
 			{
-				grdOrderDetail.ItemsSource = new List<Productcategory>();
+				grdOrderDetail.ItemsSource = new List<Orderdetail>();
 			}
 		}
 	}

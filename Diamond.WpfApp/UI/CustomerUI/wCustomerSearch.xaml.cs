@@ -1,33 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Diamond.Business;
-using Diamond.Common;
 using Diamond.Data.Models;
 
-namespace Diamond.WpfApp.UI.ProductCategoryUI
+namespace Diamond.WpfApp.UI.CustomerUI
 {
-	/// <summary>
-	/// Interaction logic for wProductCategorySearch.xaml
-	/// </summary>
-	public partial class wProductCategorySearch : Window
+    /// <summary>
+    /// Interaction logic for wProductCategorySearch.xaml
+    /// </summary>
+    public partial class wCustomerReport : Window
 	{
-		private ProductCategoryBusiness _business;
-		public wProductCategorySearch()
+		private readonly CustomerBusiness _business;
+		public wCustomerReport()
 		{
 			InitializeComponent();
-			_business = new ProductCategoryBusiness();
-			this.LoadGrdCategory();
+            _business = new CustomerBusiness();
+			this.LoadGrdCustomer();
 		}
 
 		private async void ButtonSearch_Click(object sender, RoutedEventArgs e)
@@ -35,40 +23,38 @@ namespace Diamond.WpfApp.UI.ProductCategoryUI
 			try
 			{
 
-				var category = new Productcategory()
+				var customer = new Customer()
 				{
-					CategoryId = CategoryId.Text,
-					Name = Name.Text,
-					Description = Description.Text,
-					IconUrl = IconUrl.Text,
-					PromotionImageUrl = PromotionImageUrl.Text,
-					IsFeatured = FeatureTrue.IsChecked == true ? true : FeatureFalse.IsChecked==true?false:null,
-					PromotionalTagline = PromotionalTagline.Text,
-					ProductAmount = string.IsNullOrEmpty(ProductAmount.Text.Trim())?-1:int.Parse(ProductAmount.Text),
-					CareInstructions = CareInstruction.Text,
-					MaximumPrice = string.IsNullOrEmpty(MaximumPrice.Text.Trim()) ? 0 : decimal.Parse(MaximumPrice.Text),
-					MinimumPrice = string.IsNullOrEmpty(MinimumPrice.Text.Trim()) ? 0 : decimal.Parse(MinimumPrice.Text),
+					CustomerId = CustomerId.Text,
+					Email = Email.Text,
+					FirstName = FirstName.Text,
+					LastName = LastName.Text,
+					Address = Address.Text,
+					PhoneNumber = PhoneNumber.Text,
+					DateOfBirth = DateTime.Parse(DateOfBirth.Text),
+					IsActive = IsActive.IsChecked == true ? true : false,
+					Country = Country.Text,
+					Gender = Gender.Text
 				};
 
 
 				//var result = await _business.SearchByFields(categoryId, name, description, iconUrl, promotionImageUrl, promotionalTagline, careInstructions, maximumPrice, minimumPrice);
-				var result = await _business.SearchByFields(category);
+				var result = await _business.SearchByFields(customer);
 				MessageBox.Show(result.Message, "Save");
 
-				this.LoadGrdCategory(result.Data as List<Productcategory>);
+				this.LoadGrdCustomer(result.Data as List<Customer>);
 
 				// Clear all the text boxes
-				CategoryId.Text = string.Empty;
-				Name.Text = string.Empty;
-				Description.Text = string.Empty;
-				IconUrl.Text = string.Empty;
-				PromotionImageUrl.Text = string.Empty;
-				PromotionalTagline.Text = string.Empty;
-				ProductAmount.Text = string.Empty;
-				FeatureTrue.IsChecked = false;
-				CareInstruction.Text = string.Empty;
-				MaximumPrice.Text = string.Empty;
-				MinimumPrice.Text = string.Empty;
+				CustomerId.Text = string.Empty;
+				Email.Text = string.Empty;
+				FirstName.Text = string.Empty;
+				LastName.Text = string.Empty;
+				Address.Text = string.Empty;
+				PhoneNumber.Text = string.Empty;
+				DateOfBirth.Text = string.Empty;
+				IsActive.IsChecked = false;
+				Country.Text = string.Empty;
+				Gender.Text = string.Empty;
 
 			}
 			catch (Exception ex)
@@ -77,7 +63,7 @@ namespace Diamond.WpfApp.UI.ProductCategoryUI
 			}
 		}
 
-		private async void grdProductCategory_ButtonDelete_Click(object sender, RoutedEventArgs e)
+		private async void grdCustomer_ButtonDelete_Click(object sender, RoutedEventArgs e)
 		{
 			var button = sender as Button;
 			var categoryId = button.CommandParameter.ToString();
@@ -93,7 +79,7 @@ namespace Diamond.WpfApp.UI.ProductCategoryUI
 						MessageBox.Show(deleteResult.Message, "Delete");
 
 						// Refresh the DataGrid
-						this.LoadGrdCategory();
+						this.LoadGrdCustomer();
 					}
 					catch (Exception ex)
 					{
@@ -103,7 +89,7 @@ namespace Diamond.WpfApp.UI.ProductCategoryUI
 			}
 		}
 
-		private async void grdProductCategory_ButtonView_Click(object sender, RoutedEventArgs e)
+		private async void grdCustomer_ButtonView_Click(object sender, RoutedEventArgs e)
 		{
 			var button = sender as Button;
 			var categoryId = button.CommandParameter.ToString();
@@ -122,7 +108,7 @@ namespace Diamond.WpfApp.UI.ProductCategoryUI
 		private async void ButtonUpdate_Click(object sender, RoutedEventArgs e)
 		{
 			// Lấy thông tin từ các TextBox
-			Productcategory updatedCategory = _business.GetById(CategoryId.Text).Result.Data as Productcategory;
+			Productcategory updatedCategory = _business.GetById(CustomerId.Text).Result.Data as Productcategory;
 			updatedCategory.Name = Name.Text;
 			try
 			{
@@ -131,7 +117,7 @@ namespace Diamond.WpfApp.UI.ProductCategoryUI
 				MessageBox.Show(result.Message, "Update");
 
 				// Làm mới DataGrid để hiển thị dữ liệu mới
-				LoadGrdCategory();
+				LoadGrdCustomer();
 			}
 			catch (Exception ex)
 			{
@@ -139,42 +125,41 @@ namespace Diamond.WpfApp.UI.ProductCategoryUI
 			}
 		}
 
-		private void grdProductCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		private void grdCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			// Lấy dòng được chọn trong DataGrid
-			if (grdProductCategory.SelectedItem != null)
+			if (grdCustomer.SelectedItem != null)
 			{
-				Productcategory selectedCategory = (Productcategory)grdProductCategory.SelectedItem;
+				Customer selectedCustomer = (Customer)grdCustomer.SelectedItem;
 
 				// Điền thông tin của dòng được chọn vào các TextBox
-				CategoryId.Text = selectedCategory.CategoryId;
-				Name.Text = selectedCategory.Name;
-				Description.Text = selectedCategory.Description;
-				IconUrl.Text = selectedCategory.IconUrl;
-				PromotionImageUrl.Text = selectedCategory.PromotionImageUrl;
-				PromotionalTagline.Text = selectedCategory.PromotionalTagline;
-				ProductAmount.Text = selectedCategory.ProductAmount.ToString();
-				FeatureTrue.IsChecked = (bool)selectedCategory.IsFeatured ? true : false;
-				CareInstruction.Text = selectedCategory.CareInstructions;
-				MaximumPrice.Text = selectedCategory.MaximumPrice.ToString();
-				MinimumPrice.Text = selectedCategory.MinimumPrice.ToString();
+				CustomerId.Text = selectedCustomer.CustomerId;
+				Email.Text = selectedCustomer.Email;
+				FirstName.Text = selectedCustomer.FirstName;
+				LastName.Text = selectedCustomer.LastName;
+				Address.Text = selectedCustomer.Address;
+				PhoneNumber.Text = selectedCustomer.PhoneNumber;
+				DateOfBirth.Text = selectedCustomer.DateOfBirth.ToString();
+				IsActive.IsChecked = selectedCustomer.IsActive;
+				Country.Text = selectedCustomer.Country;
+				Gender.Text = selectedCustomer.Gender;
 			}
 		}
 
-		private async void grdProductCategory_ButtonReport_Click(object sender, RoutedEventArgs e)
+		private async void grdCustomer_ButtonReport_Click(object sender, RoutedEventArgs e)
 		{
 			var button = sender as Button;
-			var categoryId = button.CommandParameter.ToString();
+			var customerId = button.CommandParameter.ToString();
 
-			if (!string.IsNullOrEmpty(categoryId))
+			if (!string.IsNullOrEmpty(customerId))
 			{
-				var report = new wProductCategoryReport(categoryId);
+				var report = new wCustomerReport(customerId);
 				report.Owner = this;
 				report.Show();
 			}
 		}
 
-		private async void grdProductCategory_MouseDouble_Click(object sender, RoutedEventArgs e)
+		private async void grdCustomer_MouseDouble_Click(object sender, RoutedEventArgs e)
 		{
 			//MessageBox.Show("Double Click on Grid");
 			DataGrid grd = sender as DataGrid;
@@ -183,54 +168,53 @@ namespace Diamond.WpfApp.UI.ProductCategoryUI
 				var row = grd.ItemContainerGenerator.ContainerFromItem(grd.SelectedItem) as DataGridRow;
 				if (row != null)
 				{
-					var item = row.Item as Productcategory;
+					var item = row.Item as Customer;
 					if (item != null)
 					{
-						var categoryResult = await _business.GetById(item.CategoryId);
+						var customerResult = await _business.GetById(item.CustomerId);
 
-						if (categoryResult.Status > 0 && categoryResult.Data != null)
+						if (customerResult.Status > 0 && customerResult.Data != null)
 						{
-							item = categoryResult.Data as Productcategory;
-							CategoryId.Text = item.CategoryId;
-							Name.Text = item.Name;
-							Description.Text = item.Description;
-							IconUrl.Text = item.IconUrl;
-							PromotionImageUrl.Text = item.PromotionImageUrl;
-							PromotionalTagline.Text = item.PromotionalTagline;
-							ProductAmount.Text = item.ProductAmount.ToString();
-							FeatureTrue.IsChecked = (bool)item.IsFeatured ? true : false;
-							CareInstruction.Text = item.CareInstructions;
-							MaximumPrice.Text = item.MaximumPrice.ToString();
-							MinimumPrice.Text = item.MinimumPrice.ToString();
+							item = customerResult.Data as Customer;
+							CustomerId.Text = item.CustomerId;
+							Email.Text = item.Email;
+							FirstName.Text = item.FirstName;
+							LastName.Text = item.LastName;
+							Address.Text = item.Address;
+							PhoneNumber.Text = item.PhoneNumber;
+							DateOfBirth.Text = item.DateOfBirth.ToString();
+							Gender.Text = item.Gender;
+							Country.Text = item.Country;
+							IsActive.IsChecked = item.IsActive;
 						}
 					}
 				}
 			}
 		}
 
-		private async void LoadGrdCategory()
+		private async void LoadGrdCustomer()
 		{
 			var result = await _business.GetAll();
 
 			if (result.Status > 0 && result.Data != null)
 			{
-				grdProductCategory.ItemsSource = result.Data as List<Productcategory>;
+				grdCustomer.ItemsSource = result.Data as List<Customer>;
 			}
 			else
 			{
-				grdProductCategory.ItemsSource = new List<Productcategory>();
+                grdCustomer.ItemsSource = new List<Customer>();
 			}
 		}
 
-		private async void LoadGrdCategory(List<Productcategory> list)
+		private async void LoadGrdCustomer(List<Customer> list)
 		{
 			if (list.Count > 0)
 			{
-				grdProductCategory.ItemsSource = list;
+                grdCustomer.ItemsSource = list;
 			}
 			else
 			{
-				grdProductCategory.ItemsSource = new List<Productcategory>();
+                grdCustomer.ItemsSource = new List<Customer>();
 			}
 		}
 	}

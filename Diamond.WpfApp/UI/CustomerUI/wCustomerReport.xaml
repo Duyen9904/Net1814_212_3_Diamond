@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Diamond.WpfApp.UI.CustomerUI"
+        xmlns:local="clr-namespace:Diamond.WpfApp.UI"
         mc:Ignorable="d"
         Title="wCustomerReport" Height="600" Width="450">
     <Window.Resources>
@@ -33,94 +33,86 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Content="CategoryId" Grid.Column="0" Grid.Row="0" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center"/>
+                    <Label Content="CustomerId" Grid.Column="0" Grid.Row="0" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center"/>
 
                     <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
-                        <TextBlock Name="CategoryId" VerticalAlignment="Center"/>
+                        <TextBlock Name="CustomerId" VerticalAlignment="Center"/>
                     </StackPanel>
 
                     <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
 
-                    <Label Content="Name" Grid.Column="0" Grid.Row="1" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+                    <Label Content="Email" Grid.Column="0" Grid.Row="1" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
 
                     <StackPanel Grid.Column="1" Grid.Row="1"   VerticalAlignment="Center">
-                        <TextBlock Name="Name" VerticalAlignment="Center"/>
+                        <TextBlock Name="Email" VerticalAlignment="Center"/>
                     </StackPanel>
 
                     <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
 
-                    <Label Content="Description" Grid.Column="0" Grid.Row="2" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+                    <Label Content="LastName" Grid.Column="0" Grid.Row="2" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
 
                     <StackPanel Grid.Column="1" Grid.Row="2"  VerticalAlignment="Center" HorizontalAlignment="Left">
-                        <TextBlock Name="Description" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="200" MaxHeight="40"/>
+                        <TextBlock Name="LastName" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="200" MaxHeight="40"/>
                     </StackPanel>
 
                     <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
 
-                    <Label Content="IsFeatured" Grid.Column="0" Grid.Row="3" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+                    <Label Content="Is Active" Grid.Column="0" Grid.Row="3" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
 
                     <StackPanel Grid.Column="1" Grid.Row="3"   VerticalAlignment="Center">
-                        <TextBlock Name="IsFeatured" VerticalAlignment="Center"/>
+                        <TextBlock Name="IsActive" VerticalAlignment="Center"/>
                     </StackPanel>
 
                     <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="3" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
 
                     <!--seperate-->
-                    <Label Content="IconUrl" Grid.Column="0" Grid.Row="4" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+                    <Label Content="Address" Grid.Column="0" Grid.Row="4" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
 
                     <StackPanel Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" >
-                        <TextBlock Name="IconUrl" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="200" MaxHeight="150"/>
+                        <TextBlock Name="Address" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="200" MaxHeight="150"/>
                     </StackPanel>
 
                     <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="4" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
 
-                    <Label Content="ImageUrl" Grid.Column="0" Grid.Row="5" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+                    <Label Content="PhoneNumber" Grid.Column="0" Grid.Row="5" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
 
                     <StackPanel Grid.Column="1" Grid.Row="5"   VerticalAlignment="Center" HorizontalAlignment="Left">
-                        <TextBlock Name="PromotionImageUrl" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="200" MaxHeight="40"/>
+                        <TextBlock Name="PhoneNumber" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="200" MaxHeight="40"/>
                     </StackPanel>
 
 
                     <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="5" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
 
-                    <Label Content="Tagline" Grid.Column="0" Grid.Row="6" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+                    <Label Content="DateOfBirth" Grid.Column="0" Grid.Row="6" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
 
                     <StackPanel Grid.Column="1" Grid.Row="6" MaxHeight="150"  VerticalAlignment="Center" HorizontalAlignment="Left">
-                        <TextBlock Name="PromotionalTagline" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="200" MaxHeight="40"/>
+                        <TextBlock Name="DateOfBirth" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="200" MaxHeight="40"/>
                     </StackPanel>
 
 
                     <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="6" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
 
-                    <Label Content="Amount" Grid.Column="0" Grid.Row="7" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+                    <Label Content="Gender" Grid.Column="0" Grid.Row="7" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
 
                     <StackPanel Grid.Column="1" Grid.Row="7"   VerticalAlignment="Center">
-                        <TextBlock Name="ProductAmount" VerticalAlignment="Center"/>
+                        <TextBlock Name="Gender" VerticalAlignment="Center"/>
                     </StackPanel>
 
                     <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="7" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
 
                     <!--seperate-->
-                    <Label Content="Instruction" Grid.Column="0" Grid.Row="8" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+                    <Label Content="Country" Grid.Column="0" Grid.Row="8" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
 
                     <StackPanel Grid.Column="1" Grid.Row="8"   VerticalAlignment="Center">
-                        <TextBlock Name="CareInstruction" VerticalAlignment="Center"/>
+                        <TextBlock Name="Country" VerticalAlignment="Center"/>
                     </StackPanel>
 
                     <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="8" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
                     
-                    <Label Content="MaxPrice" Grid.Column="0" Grid.Row="9" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+                    <Label Content="FirstName" Grid.Column="0" Grid.Row="9" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
 
                     <StackPanel Grid.Column="1" Grid.Row="9" MaxHeight="150"  VerticalAlignment="Center">
-                        <TextBlock Name="MaximumPrice" VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                    <Separator Height="0.5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="9" VerticalAlignment="Bottom" Margin="25, 40, 90,0"></Separator>
-
-                    <Label Content="MinPrice" Grid.Column="0" Grid.Row="10" FontWeight="DemiBold" Width ="90" HorizontalContentAlignment="Right" VerticalAlignment="Center" />
-
-                    <StackPanel Grid.Column="1" Grid.Row="10"   VerticalAlignment="Center">
-                        <TextBlock Name="MinimumPrice" VerticalAlignment="Center"/>
+                        <TextBlock Name="FirstName" VerticalAlignment="Center"/>
                     </StackPanel>
 
                 </Grid>

@@ -1,12 +1,11 @@
 ﻿using Diamond.Business;
 using Diamond.Data.Models;
-using Diamond.WpfApp.UI.ProductCategoryUI;
-using System.Collections.ObjectModel;
+using Diamond.WpfApp.UI.CustomerUI;
 using System.Windows;
 using System.Windows.Controls;
 
 
-namespace DiamondShop.WpfApp.UI
+namespace DiamondShop.WpfApp.UI.CustomerUI
 {
     /// <summary>
     /// Interaction logic for wCustomer.xaml
@@ -19,7 +18,7 @@ namespace DiamondShop.WpfApp.UI
         {
             InitializeComponent();
             _business = new CustomerBusiness();
-            this.LoadGrdCategory();
+            this.LoadGrdCustomer();
         }
 
         private async void ButtonSave_Click(object sender, RoutedEventArgs e)
@@ -44,7 +43,7 @@ namespace DiamondShop.WpfApp.UI
                         LastName = LastName.Text,
                         Address = Address.Text,
                         PhoneNumber = PhoneNumber.Text,
-                        DateOfBirth = DateOfBirth.Text,
+                        DateOfBirth = DateTime.Parse(DateOfBirth.Text),
                         Gender = Gender.Text,
                         IsActive = IsActive.IsChecked == true ? true : false,
                         Country = Country.Text
@@ -65,7 +64,7 @@ namespace DiamondShop.WpfApp.UI
                     updatedCustomer.LastName = LastName.Text;
                     updatedCustomer.Address = Address.Text;
                     updatedCustomer.PhoneNumber = PhoneNumber.Text;
-                    updatedCustomer.DateOfBirth = DateOfBirth.Text;
+                    updatedCustomer.DateOfBirth = DateTime.Parse(DateOfBirth.Text);
                     updatedCustomer.Gender = Gender.Text;
                     updatedCustomer.IsActive = IsActive.IsChecked == true ? true : false;
                     updatedCustomer.Country = Country.Text;
@@ -187,15 +186,15 @@ namespace DiamondShop.WpfApp.UI
 
             if (!string.IsNullOrEmpty(customerID))
             {
-                var report = new wProductCategoryReport(customerID);
+                var report = new wCustomerReport(customerID);
                 report.Owner = this;
                 report.Show();
             }
         }
 
-        private async void grdProductCategory_ButtonSearch_Click(object sender, RoutedEventArgs e)
+        private async void grdCustomer_ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
-            var search = new wProductCategorySearch();
+            var search = new wCustomerSearch();
             search.Owner = this;
             search.Show();
         }
