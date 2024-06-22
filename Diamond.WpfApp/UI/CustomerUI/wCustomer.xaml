@@ -71,10 +71,10 @@ Command="{Binding SaveCommand}" Click="grdCustomer_ButtonSearch_Click" Backgroun
                 Command="{Binding ResetCommand}" Margin="5,0,10,0" Click="ButtonCancel_Click" RenderTransformOrigin="0.718,10.343"/>
             </StackPanel>
             <StackPanel Height="310">
-                <DataGrid x:Name="grdCustomer" AutoGenerateColumns="False" ItemsSource="{Binding CustomerRecords}" 
+                <DataGrid x:Name="grdCustomer" AutoGenerateColumns="False" ItemsSource="{Binding Customer}" 
       CanUserAddRows="False" Height="310"                         MouseDoubleClick="grdCustomer_MouseDouble_Click" SelectionMode="Single" SelectionUnit="FullRow"
          >
-                    <!--SelectionChanged="grdProductCategory_SelectionChanged"-->
+                    <!--SelectionChanged="grdCustomer_SelectionChanged"-->
                     <UIElement.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>

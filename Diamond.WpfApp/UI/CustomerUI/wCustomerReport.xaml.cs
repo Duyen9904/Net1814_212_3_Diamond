@@ -9,7 +9,7 @@ namespace Diamond.WpfApp.UI.CustomerUI
 	/// </summary>
 	public partial class wCustomerReport : Window
 	{
-		private readonly CustomerBusiness _business;
+		private CustomerBusiness _business;
 		public wCustomerReport(string categoryId)
 		{
 			InitializeComponent();

@@ -8,10 +8,10 @@ namespace Diamond.WpfApp.UI.CustomerUI
     /// <summary>
     /// Interaction logic for wProductCategorySearch.xaml
     /// </summary>
-    public partial class wCustomerReport : Window
+    public partial class wCustomerSearch : Window
 	{
 		private readonly CustomerBusiness _business;
-		public wCustomerReport()
+		public wCustomerSearch()
 		{
 			InitializeComponent();
             _business = new CustomerBusiness();
@@ -32,8 +32,8 @@ namespace Diamond.WpfApp.UI.CustomerUI
 					Address = Address.Text,
 					PhoneNumber = PhoneNumber.Text,
 					DateOfBirth = DateTime.Parse(DateOfBirth.Text),
-					IsActive = IsActive.IsChecked == true ? true : false,
-					Country = Country.Text,
+                    IsActive = IsActive.IsChecked == true,
+                    Country = Country.Text,
 					Gender = Gender.Text
 				};
 
@@ -108,12 +108,12 @@ namespace Diamond.WpfApp.UI.CustomerUI
 		private async void ButtonUpdate_Click(object sender, RoutedEventArgs e)
 		{
 			// Lấy thông tin từ các TextBox
-			Productcategory updatedCategory = _business.GetById(CustomerId.Text).Result.Data as Productcategory;
-			updatedCategory.Name = Name.Text;
+			Customer updatedCustomer = _business.GetById(CustomerId.Text).Result.Data as Customer;
+			updatedCustomer.Address = Address.Text;
 			try
 			{
 				// Gọi phương thức Update trong lớp business để cập nhật dữ liệu
-				var result = await _business.Update(updatedCategory);
+				var result = await _business.Update(updatedCustomer);
 				MessageBox.Show(result.Message, "Update");
 
 				// Làm mới DataGrid để hiển thị dữ liệu mới

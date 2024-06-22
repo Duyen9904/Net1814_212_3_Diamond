@@ -13,7 +13,7 @@
     </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical">
-            <GroupBox Header="Product Category Report" HeaderTemplate="{StaticResource GroupBoxHeaderTemplate}" HorizontalContentAlignment="Center" Margin="20" Width="300">
+            <GroupBox Header="Customer Report" HeaderTemplate="{StaticResource GroupBoxHeaderTemplate}" HorizontalContentAlignment="Center" Margin="20" Width="300">
                 <Grid Height="450">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>

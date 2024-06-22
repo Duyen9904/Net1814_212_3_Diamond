@@ -110,7 +110,7 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 		private async void ButtonUpdate_Click(object sender, RoutedEventArgs e)
 		{
 			// Lấy thông tin từ các TextBox
-			Orderdetail updatedOrderDetail = await _business.GetById(OrderetailId.Text)).Result.Data as Orderdetail;
+			Orderdetail updatedOrderDetail = await _business.GetById(OrderetailId.Text).Result.Data as Orderdetail;
             updatedOrderDetail.Quantity = Quantity.Text;
 			try
 			{
