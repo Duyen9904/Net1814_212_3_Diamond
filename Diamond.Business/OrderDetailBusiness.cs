@@ -146,7 +146,7 @@ namespace Diamond.Business
             {
                 var searchTerm = $"{orderdetail.OrderDetailId} {orderdetail.OrderId} {orderdetail.MainDiamondId} {orderdetail.ShellId} {orderdetail.SubDiamondId}".Trim();
 
-                var orderDetails = await _unitOfWork.OrderDetailRepository.Search(searchTerm);
+                var orderDetails = await _unitOfWork.OrderDetailRepository.SearchByFieldsAsync(searchTerm);
 
                 if (orderDetails == null || !orderDetails.Any())
                 {

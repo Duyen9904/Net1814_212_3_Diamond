@@ -146,6 +146,28 @@ namespace Diamond.Business
                 return new BusinessResult(Const.ERROR_EXCEPTION, ex.Message);
             }
         }
+        public async Task<IBusinessResult> SearchByFields(
+            Customer category)
+        {
+            try
+            {
 
+                //var ProductCategory = await _ProductCategoryRepository.GetByIdAsync(code);
+                var customer = await _unitOfWork.CustomerRepository.SearchByFieldsAsync(category);
+
+                if (customer == null)
+                {
+                    return new BusinessResult(Const.WARNING_NO_DATA_CODE, Const.WARNING_NO_DATA__MSG);
+                }
+                else
+                {
+                    return new BusinessResult(Const.SUCCESS_READ_CODE, Const.SUCCESS_READ_MSG, customer);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new BusinessResult(Const.ERROR_EXCEPTION, ex.Message);
+            }
+        }
     }
 }

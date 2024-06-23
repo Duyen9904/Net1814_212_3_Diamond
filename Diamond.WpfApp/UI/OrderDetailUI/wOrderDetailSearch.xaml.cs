@@ -107,27 +107,39 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 			this.Close();
 		}
 
-		private async void ButtonUpdate_Click(object sender, RoutedEventArgs e)
-		{
-			// Lấy thông tin từ các TextBox
-			Orderdetail updatedOrderDetail = await _business.GetById(OrderetailId.Text).Result.Data as Orderdetail;
-            updatedOrderDetail.Quantity = Quantity.Text;
-			try
-			{
-				// Gọi phương thức Update trong lớp business để cập nhật dữ liệu
-				var result = await _business.Update(updatedOrderDetail);
-				MessageBox.Show(result.Message, "Update");
+        private async void ButtonUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var orderDetailResult = await _business.GetById(txtOrderDetailId.Text);
+                if (orderDetailResult.Data is Orderdetail updatedOrderDetail)
+                {
+                    if (int.TryParse(txtQuantity.Text, out int quantity))
+                    {
+                        updatedOrderDetail.Quantity = quantity;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid quantity format.", "Error");
+                        return;
+                    }
+                    var result = await _business.Update(updatedOrderDetail);
+                    MessageBox.Show(result.Message, "Update");
+                    LoadGrdOrderDetail();
+                }
+                else
+                {
+                    MessageBox.Show("Order detail not found.", "Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error");
+            }
+        }
 
-				// Làm mới DataGrid để hiển thị dữ liệu mới
-				LoadGrdOrderDetail();
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.ToString(), "Error");
-			}
-		}
 
-		private void grdProductCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void grdProductCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			// Lấy dòng được chọn trong DataGrid
 			if (grdOrderDetail.SelectedItem != null)
