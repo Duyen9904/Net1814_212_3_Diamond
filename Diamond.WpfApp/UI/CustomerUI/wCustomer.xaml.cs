@@ -134,7 +134,18 @@ namespace DiamondShop.WpfApp.UI.CustomerUI
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            CustomerId.Text = "";
+            Email.Text = "";
+            FirstName.Text = "";
+            LastName.Text = "";
+            Address.Text = "";
+            PhoneNumber.Text = "";
+            DateOfBirth.Text = "";
+            Gender.AcceptsReturn = false;
+            IsActive.IsChecked = false;
+            Country.Text = "";
+
+            LoadGrdCustomer();
         }
 
         private async void ButtonUpdate_Click(object sender, RoutedEventArgs e)
@@ -238,11 +249,11 @@ namespace DiamondShop.WpfApp.UI.CustomerUI
 
             if (result.Status > 0 && result.Data != null)
             {
-                grdCustomer.ItemsSource = result.Data as List<Productcategory>;
+                grdCustomer.ItemsSource = result.Data as List<Customer>;
             }
             else
             {
-                grdCustomer.ItemsSource = new List<Productcategory>();
+                grdCustomer.ItemsSource = new List<Customer>();
             }
         }
     }

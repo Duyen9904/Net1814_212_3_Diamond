@@ -9,10 +9,8 @@
     <Grid>
         <StackPanel Orientation="Vertical">
             <GroupBox Header="Customer Form" Margin="10">
-                <Grid Height="250">
+                <Grid Height="120">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -58,7 +56,7 @@
                     <TextBox Grid.Row="2" Grid.Column="1" x:Name="Country" Height="25" Text="{Binding Path=Customer.Country, Mode=TwoWay}"  Margin="5" Width="120" HorizontalAlignment="Left"/>
 
 					<Label Content="IsActive" Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="120"/>
-					<CheckBox Grid.Row="2" Grid.Column="3" x:Name="IsActive" Margin="5" Width="120" HorizontalAlignment="Left" IsChecked="{Binding Path=Customer.IsActive, Mode=TwoWay}"/>
+                    <CheckBox Grid.Row="2" Grid.Column="3" x:Name="IsActive" Margin="5" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding Path=Customer.IsActive, Mode=TwoWay}"/>
 
 				</Grid>
             </GroupBox>
@@ -71,7 +69,7 @@ Command="{Binding SaveCommand}" Click="grdCustomer_ButtonSearch_Click" Backgroun
                 Command="{Binding ResetCommand}" Margin="5,0,10,0" Click="ButtonCancel_Click" RenderTransformOrigin="0.718,10.343"/>
             </StackPanel>
             <StackPanel Height="310">
-                <DataGrid x:Name="grdCustomer" AutoGenerateColumns="False" ItemsSource="{Binding Customer}" 
+                <DataGrid x:Name="grdCustomer" AutoGenerateColumns="False" ItemsSource="{Binding Customers}" 
       CanUserAddRows="False" Height="310"                         MouseDoubleClick="grdCustomer_MouseDouble_Click" SelectionMode="Single" SelectionUnit="FullRow"
          >
                     <!--SelectionChanged="grdCustomer_SelectionChanged"-->
@@ -84,13 +82,13 @@ Command="{Binding SaveCommand}" Click="grdCustomer_ButtonSearch_Click" Backgroun
                         </TransformGroup>
                     </UIElement.RenderTransform>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Customer ID" Binding="{Binding Path=CustomerId}" Visibility="Visible"/>
+                        <DataGridTextColumn Header="CustomerId" Binding="{Binding CustomerId}" Width="100" Visibility="Visible"/>
                         <DataGridTextColumn Header="Email" Binding="{Binding Path=Email}" Width="100" IsReadOnly="True"/>
                         <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" Width="100" IsReadOnly="True"/>
                         <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" Width="100" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Address" Binding="{Binding Path=Address}" Width="200" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Phone Number" Binding="{Binding Path=PhoneNumber}" Width="100" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Date Of Birth" Binding="{Binding Path=DateOfBirth}" Width="100" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Address" Binding="{Binding Path=Address}" Width="180" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Phone Number" Binding="{Binding Path=PhoneNumber}" Width="105" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Date Of Birth" Binding="{Binding Path=DateOfBirth}" Width="110" IsReadOnly="True"/>
                         <DataGridTextColumn Header="Gender" Binding="{Binding Path=Gender}"  Width="100" IsReadOnly="True"/>
                         <DataGridTextColumn Header="Country" Binding="{Binding Path=Country}" Width="100" IsReadOnly="True"/>
                         <DataGridTextColumn Header="Is Active" Binding="{Binding Path=IsActive}" Width="100" IsReadOnly="True"/>

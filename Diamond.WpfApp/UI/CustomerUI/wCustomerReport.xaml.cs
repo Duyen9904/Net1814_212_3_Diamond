@@ -14,7 +14,7 @@ namespace Diamond.WpfApp.UI.CustomerUI
 		{
 			InitializeComponent();
             _business = new CustomerBusiness();
-			this.LoadGrdCategoryReport(categoryId);
+			this.LoadGrdCustomerReport(categoryId);
 
 		}
 
@@ -23,7 +23,7 @@ namespace Diamond.WpfApp.UI.CustomerUI
 			this.Close();
 		}
 
-		private async void LoadGrdCategoryReport(string customerId)
+		private async void LoadGrdCustomerReport(string customerId)
 		{
 			var result = await _business.GetById(customerId);
 			if (result.Data != null)
@@ -42,5 +42,10 @@ namespace Diamond.WpfApp.UI.CustomerUI
 				Country.Text = item.Country;
 			}
 		}
-	}
+
+        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
+        }
+    }
 }

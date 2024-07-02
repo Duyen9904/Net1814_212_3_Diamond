@@ -39,9 +39,10 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
                 UnitWeight.Text = item.UnitWeight.ToString();
                 UnitPrice.Text = item.UnitPrice.ToString();
                 DiscountPercentage.Text = item.DiscountPercentage.ToString();
-                Note.Text = item.Note.ToString();
+                Note.Text = item.Note?.ToString() ?? string.Empty;
+
 
             }
-		}
+        }
 	}
 }
