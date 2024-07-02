@@ -203,7 +203,7 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
             }
         }
 
-        private async void grdProductCategory_ButtonSearch_Click(object sender, RoutedEventArgs e)
+        private async void grdOrderdetail_ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
             var search = new wOrderDetailSearch();
             search.Owner = this;

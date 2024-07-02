@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Diamond.WpfApp.UI"
+        xmlns:local="clr-namespace:Diamond.WpfApp.UI.OrderDetailUI"
         mc:Ignorable="d"
         Title="Order Detail" Height="450" Width="1220">
     <Window.Resources>
@@ -13,7 +13,7 @@
     </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical">
-            <GroupBox Header="Product Category Form" HeaderTemplate="{StaticResource GroupBoxHeaderTemplate}" Margin="10">
+            <GroupBox Header="Order Detail Form" HeaderTemplate="{StaticResource GroupBoxHeaderTemplate}" Margin="10">
                 <Grid Height="150">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -102,14 +102,14 @@
                         <DataGridTemplateColumn Width="50">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Background="Red" Foreground="White" Content="X" x:Name="ButtonDelete" CommandParameter="{Binding Path=OrderDetailId}" Click="grdOrderdetail_ButtonDelete_Click"/>
+                                    <Button Background="Red" Foreground="White" Content="X" x:Name="ButtonDelete" CommandParameter="{Binding Path=OrderDetailId}" Click="grdOrderDetail_ButtonDelete_Click"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <DataGridTemplateColumn Width="50">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Background="CadetBlue" Foreground="White" Content="View" x:Name="ButtonReport" CommandParameter="{Binding Path=OrderDetailId}" Click="grdOrderdetail_ButtonReport_Click"/>
+                                    <Button Background="CadetBlue" Foreground="White" Content="View" x:Name="ButtonReport" CommandParameter="{Binding Path=OrderDetailId}" Click="grdOrderDetail_ButtonReport_Click"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

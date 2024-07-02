@@ -66,7 +66,7 @@
             </GroupBox>
             <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="ButtonSearch" Content="Search" Height="30" Width="80" 
-Command="{Binding SaveCommand}" Click="grdProductCategory_ButtonSearch_Click" Background="Orange" Foreground="White" />
+Command="{Binding SaveCommand}" Click="grdOrderdetail_ButtonSearch_Click" Background="Orange" Foreground="White" />
                 <Button x:Name="ButtonSave" Content="Save" Height="30" Width="80" 
                 Command="{Binding SaveCommand}" Click="ButtonSave_Click" Background="Green" Margin="10,0,5,0" Foreground="White" />
                 <Button x:Name="ButtonCancel" Content="Cancel" Height="30" Width="80" 

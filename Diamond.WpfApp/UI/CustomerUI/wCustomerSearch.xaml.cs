@@ -92,10 +92,10 @@ namespace Diamond.WpfApp.UI.CustomerUI
 		private async void grdCustomer_ButtonView_Click(object sender, RoutedEventArgs e)
 		{
 			var button = sender as Button;
-			var categoryId = button.CommandParameter.ToString();
-			if (string.IsNullOrEmpty(categoryId))
+			var customerId = button.CommandParameter.ToString();
+			if (string.IsNullOrEmpty(customerId))
 			{
-				var item = await _business.GetById(categoryId);
+				var item = await _business.GetById(customerId);
 			}
 		}
 

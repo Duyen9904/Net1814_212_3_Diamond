@@ -157,7 +157,7 @@ namespace DiamondShop.WpfApp.UI.CustomerUI
             }
         }
 
-        private void grdProductCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void grdCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Lấy dòng được chọn trong DataGrid
             if (grdCustomer.SelectedItem != null)
@@ -199,7 +199,7 @@ namespace DiamondShop.WpfApp.UI.CustomerUI
             search.Show();
         }
 
-        private async void grdProductCategory_MouseDouble_Click(object sender, RoutedEventArgs e)
+        private async void grdCustomer_MouseDouble_Click(object sender, RoutedEventArgs e)
         {
             //MessageBox.Show("Double Click on Grid");
             DataGrid grd = sender as DataGrid;

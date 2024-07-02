@@ -6,7 +6,7 @@ using Diamond.Data.Models;
 namespace Diamond.WpfApp.UI.OrderDetailUI
 {
     /// <summary>
-    /// Interaction logic for wProductCategorySearch.xaml
+    /// Interaction logic for wOrderDetailSearch.xaml
     /// </summary>
     public partial class wOrderDetailSearch : Window
 	{
@@ -68,16 +68,16 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 		private async void grdOrderDetail_ButtonDelete_Click(object sender, RoutedEventArgs e)
 		{
 			var button = sender as Button;
-			var categoryId = button.CommandParameter.ToString();
+			var orderdetailid = button.CommandParameter.ToString();
 
-			if (!string.IsNullOrEmpty(categoryId))
+			if (!string.IsNullOrEmpty(orderdetailid))
 			{
 				var result = MessageBox.Show("Are you sure you want to delete this category?", "Confirm Delete", MessageBoxButton.YesNo);
 				if (result == MessageBoxResult.Yes)
 				{
 					try
 					{
-						var deleteResult = await _business.DeleteById(categoryId);
+						var deleteResult = await _business.DeleteById(orderdetailid);
 						MessageBox.Show(deleteResult.Message, "Delete");
 
 						// Refresh the DataGrid
@@ -91,13 +91,13 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 			}
 		}
 
-		private async void grdProductCategory_ButtonView_Click(object sender, RoutedEventArgs e)
+		private async void grdOrderDetail_ButtonView_Click(object sender, RoutedEventArgs e)
 		{
 			var button = sender as Button;
-			var categoryId = button.CommandParameter.ToString();
-			if (string.IsNullOrEmpty(categoryId))
+			var orderDetailId = button.CommandParameter.ToString();
+			if (string.IsNullOrEmpty(orderDetailId))
 			{
-				var item = await _business.GetById(categoryId);
+				var item = await _business.GetById(orderDetailId);
 			}
 		}
 
@@ -139,7 +139,7 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
         }
 
 
-        private void grdProductCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void grdOrderDetail_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			// Lấy dòng được chọn trong DataGrid
 			if (grdOrderDetail.SelectedItem != null)
@@ -160,7 +160,7 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
             }
 		}
 
-		private async void grdProductCategory_ButtonReport_Click(object sender, RoutedEventArgs e)
+		private async void grdOrderDetail_ButtonReport_Click(object sender, RoutedEventArgs e)
 		{
 			var button = sender as Button;
 			var categoryId = button.CommandParameter.ToString();
@@ -173,7 +173,7 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 			}
 		}
 
-		private async void grdProductCategory_MouseDouble_Click(object sender, RoutedEventArgs e)
+		private async void grdOrderDetail_MouseDouble_Click(object sender, RoutedEventArgs e)
 		{
 			//MessageBox.Show("Double Click on Grid");
 			DataGrid grd = sender as DataGrid;
