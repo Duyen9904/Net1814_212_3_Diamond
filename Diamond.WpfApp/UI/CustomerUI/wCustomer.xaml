@@ -83,28 +83,20 @@ Command="{Binding SaveCommand}" Click="grdCustomer_ButtonSearch_Click" Backgroun
                     </UIElement.RenderTransform>
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="CustomerId" Binding="{Binding CustomerId}" Width="100" Visibility="Visible"/>
-                        <DataGridTextColumn Header="Email" Binding="{Binding Path=Email}" Width="100" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" Width="100" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" Width="100" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Address" Binding="{Binding Path=Address}" Width="180" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Phone Number" Binding="{Binding Path=PhoneNumber}" Width="105" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Date Of Birth" Binding="{Binding Path=DateOfBirth}" Width="110" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Gender" Binding="{Binding Path=Gender}"  Width="100" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Country" Binding="{Binding Path=Country}" Width="100" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Is Active" Binding="{Binding Path=IsActive}" Width="100" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="100" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="100" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="100" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Address" Binding="{Binding Address}" Width="180" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}" Width="105" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Date Of Birth" Binding="{Binding DateOfBirth}" Width="110" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"  Width="100" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Country" Binding="{Binding Country}" Width="100" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Is Active" Binding="{Binding IsActive}" Width="100" IsReadOnly="True"/>
                         <DataGridTemplateColumn Width="50">
+                            <!-- Xem thong tin chi tiet cua mot diamond cu the, chi co label, khong co input textbox, makeup giao dien -->
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="Select" x:Name="ButtonEdit" CommandParameter="{Binding Path=CustomerId}"
-                                            Command="{Binding Path=DataContext.EditCommand,RelativeSource={RelativeSource FindAncestor,
-                                                    AncestorType=Window}}" Click="ButtonUpdate_Click"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Width="50">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Background="CadetBlue" Foreground="White" Content="View" x:Name="ButtonReport" CommandParameter="{Binding Path=CustomerId}" Click="grdCustomer_ButtonReport_Click"/>
+                                    <Button Background="CadetBlue" Foreground="White"  Content="View" x:Name="ButtonViewDetails" CommandParameter="{Binding Path=CustomerId}" Click="grdCustomer_ButtonView_Click"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -112,6 +104,13 @@ Command="{Binding SaveCommand}" Click="grdCustomer_ButtonSearch_Click" Backgroun
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Background="Red" Foreground="White" Content="X" x:Name="ButtonDelete" CommandParameter="{Binding Path=CustomerId}" Click="grdCustomer_ButtonDelete_Click"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="50">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Background="CadetBlue" Foreground="White" Content="View" x:Name="ButtonReport" CommandParameter="{Binding Path=CustomerId}" Click="grdCustomer_ButtonReport_Click"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

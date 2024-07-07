@@ -27,7 +27,7 @@ namespace DiamondShop.WpfApp.UI.CustomerUI
             {
                 if (string.IsNullOrEmpty(CustomerId.Text.Trim()))
                 {
-                    MessageBox.Show("Can not save because Product Category ID is empty.");
+                    MessageBox.Show("Can not save because customer ID is empty.");
                     return;
                 };
                 var item = await _business.GetById(CustomerId.Text);
@@ -100,15 +100,23 @@ namespace DiamondShop.WpfApp.UI.CustomerUI
         {
             var button = sender as Button;
             var customerId = button.CommandParameter.ToString();
+            if (customerId == null)
+            {
+                MessageBox.Show("Can not delete because customer ID is empty.");
+                return;
+            }
+            var customer = await _business.GetById(customerId);
 
             if (!string.IsNullOrEmpty(customerId))
             {
-                var result = MessageBox.Show("Are you sure you want to delete this category?", "Confirm Delete", MessageBoxButton.YesNo);
+                var result = MessageBox.Show("Are you sure you want to delete this customer?", "Confirm Delete", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
                     {
-                        var deleteResult = await _business.DeleteById(customerId);
+                        Customer updatedCustomer = customer.Data as Customer;
+                        updatedCustomer.IsActive = false;
+                        var deleteResult = await _business.Update(updatedCustomer);
                         MessageBox.Show(deleteResult.Message, "Delete");
 
                         // Refresh the DataGrid
@@ -255,6 +263,10 @@ namespace DiamondShop.WpfApp.UI.CustomerUI
             {
                 grdCustomer.ItemsSource = new List<Customer>();
             }
+        }
+        private void grdCustomer_ButtonView_Click(object sender, EventArgs e)
+        {
+            // Your code here
         }
     }
 }

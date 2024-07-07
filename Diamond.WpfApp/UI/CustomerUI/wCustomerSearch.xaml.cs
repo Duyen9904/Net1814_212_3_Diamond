@@ -70,7 +70,7 @@ namespace Diamond.WpfApp.UI.CustomerUI
 
 			if (!string.IsNullOrEmpty(categoryId))
 			{
-				var result = MessageBox.Show("Are you sure you want to delete this category?", "Confirm Delete", MessageBoxButton.YesNo);
+				var result = MessageBox.Show("Are you sure you want to delete this customer?", "Confirm Delete", MessageBoxButton.YesNo);
 				if (result == MessageBoxResult.Yes)
 				{
 					try

@@ -42,7 +42,10 @@ namespace Diamond.WpfApp.UI.CustomerUI
 				Country.Text = item.Country;
 			}
 		}
-
+        private void grdCustomer_ButtonView_Click(object sender, EventArgs e)
+        {
+            // Your code here
+        }
         private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
 
