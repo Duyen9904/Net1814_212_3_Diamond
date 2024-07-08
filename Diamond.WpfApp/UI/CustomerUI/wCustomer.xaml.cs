@@ -134,16 +134,6 @@ namespace DiamondShop.WpfApp.UI.CustomerUI
             }
         }
 
-        //private async void grdProductCategory_ButtonView_Click(object sender, RoutedEventArgs e)
-        //{
-        //	var button = sender as Button;
-        //	var categoryId = button.CommandParameter.ToString();
-        //	if (string.IsNullOrEmpty(categoryId))
-        //	{
-        //		var item = await _business.GetById(categoryId);
-        //	}
-        //}
-
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(CustomerId.Text) &&
@@ -178,16 +168,12 @@ namespace DiamondShop.WpfApp.UI.CustomerUI
 
         private async void ButtonUpdate_Click(object sender, RoutedEventArgs e)
         {
-            // Lấy thông tin từ các TextBox
             Customer updatedCustomer = _business.GetById(CustomerId.Text).Result.Data as Customer;
             updatedCustomer.Email = Email.Text;
             try
             {
-                // Gọi phương thức Update trong lớp business để cập nhật dữ liệu
                 var result = await _business.Update(updatedCustomer);
                 MessageBox.Show(result.Message, "Update");
-
-                // Làm mới DataGrid để hiển thị dữ liệu mới
                 LoadGrdCustomer();
             }
             catch (Exception ex)
@@ -198,12 +184,9 @@ namespace DiamondShop.WpfApp.UI.CustomerUI
 
         private void grdCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Lấy dòng được chọn trong DataGrid
             if (grdCustomer.SelectedItem != null)
             {
                 Customer selectedCustomer = (Customer)grdCustomer.SelectedItem;
-
-                // Điền thông tin của dòng được chọn vào các TextBox
                 CustomerId.Text = selectedCustomer.CustomerId;
                 Email.Text = selectedCustomer.Email;
                 FirstName.Text = selectedCustomer.FirstName;
