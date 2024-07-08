@@ -68,37 +68,36 @@ namespace Diamond.Data.Repository
             return query.ToList();
         }
         public async Task<List<Orderdetail>> SearchByFieldsAsync(
-          string orderDetailId = null,
-        string orderId = null,
-        string mainDiamondId = null,
-        string shellId = null,
-        string subDiamondId = null,
-        decimal lineTotal = 0,
-        int quantity = 0,
-        decimal unitWeight = 0,
-        decimal unitPrice = 0,
-        decimal discountPercentage = 0,
-        string note = null
-            )
+     string orderDetailId = null,
+     string orderId = null,
+     string mainDiamondId = null,
+     string shellId = null,
+     string subDiamondId = null,
+     decimal? lineTotal = null,
+     int? quantity = null,
+     decimal? unitWeight = null,
+     decimal? unitPrice = null,
+     decimal? discountPercentage = null,
+     string note = null
+ )
         {
             return await SearchByFieldsAsync(new Orderdetail()
             {
-               OrderDetailId = orderDetailId,
-               OrderId = orderId,
-               MainDiamondId = mainDiamondId,
-               ShellId = shellId,
-               SubDiamondId = subDiamondId,
-               LineTotal = lineTotal,
-               Quantity = quantity,
-               UnitWeight = unitWeight,
-               UnitPrice = unitPrice,
-               DiscountPercentage = discountPercentage,
-               Note = note
+                OrderDetailId = orderDetailId,
+                OrderId = orderId,
+                MainDiamondId = mainDiamondId,
+                ShellId = shellId,
+                SubDiamondId = subDiamondId,
+                LineTotal = lineTotal ?? 0,
+                Quantity = quantity ?? 0,
+                UnitWeight = unitWeight ?? 0,
+                UnitPrice = unitPrice ?? 0,
+                DiscountPercentage = discountPercentage ?? 0,
+                Note = note
             });
         }
 
-        public async Task<List<Orderdetail>> SearchByFieldsAsync(
-        Orderdetail orderdetail)
+        public async Task<List<Orderdetail>> SearchByFieldsAsync(Orderdetail orderdetail)
         {
             var query = _context.Set<Orderdetail>().AsQueryable();
             if (!string.IsNullOrWhiteSpace(orderdetail.OrderDetailId))

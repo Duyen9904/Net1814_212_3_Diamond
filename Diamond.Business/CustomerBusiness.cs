@@ -147,13 +147,13 @@ namespace Diamond.Business
             }
         }
         public async Task<IBusinessResult> SearchByFields(
-            Customer category)
+            Customer customerModel)
         {
             try
             {
 
                 //var ProductCategory = await _ProductCategoryRepository.GetByIdAsync(code);
-                var customer = await _unitOfWork.CustomerRepository.SearchByFieldsAsync(category);
+                var customer = await _unitOfWork.CustomerRepository.SearchByFieldsAsync(customerModel);
 
                 if (customer == null)
                 {
