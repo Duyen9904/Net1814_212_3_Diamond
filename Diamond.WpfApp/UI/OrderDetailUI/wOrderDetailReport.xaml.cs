@@ -32,8 +32,8 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
                 OrderDetailId.Text = item.OrderDetailId.ToString();
                 OrderId.Text = item.OrderId.ToString();
                 MainDiamondId.Text = item.MainDiamondId.ToString();
-                ShellId.Text = item.ShellId.ToString();
-                SubDiamondId.Text = item.SubDiamondId.ToString();
+                ShellID.Text = item.ShellId.ToString();
+                SubDiamondID.Text = item.SubDiamondId.ToString();
                 LineTotal.Text = item.LineTotal.ToString();
                 Quantity.Text = item.Quantity.ToString();
                 UnitWeight.Text = item.UnitWeight.ToString();
@@ -41,7 +41,17 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
                 DiscountPercentage.Text = item.DiscountPercentage.ToString();
                 Note.Text = item.Note?.ToString() ?? string.Empty;
 
-
+                Console.WriteLine("OrderDetailId: " + item.OrderDetailId);
+                Console.WriteLine("OrderId: " + item.OrderId);
+                Console.WriteLine("MainDiamondId: " + item.MainDiamondId);
+                Console.WriteLine("ShellId: " + item.ShellId);
+                Console.WriteLine("SubDiamondId: " + item.SubDiamondId);
+                Console.WriteLine("LineTotal: " + item.LineTotal);
+                Console.WriteLine("Quantity: " + item.Quantity);
+                Console.WriteLine("UnitWeight: " + item.UnitWeight);
+                Console.WriteLine("UnitPrice: " + item.UnitPrice);
+                Console.WriteLine("DiscountPercentage: " + item.DiscountPercentage);
+                Console.WriteLine("Note: " + item.Note);
             }
         }
 	}

@@ -54,6 +54,7 @@ namespace DiamondShop.WpfApp.UI.CustomerUI
 
                     var result = await _business.Save(customer);
                     MessageBox.Show(result.Message, "Save");
+                    LoadGrdCustomer();
 
 
                 }

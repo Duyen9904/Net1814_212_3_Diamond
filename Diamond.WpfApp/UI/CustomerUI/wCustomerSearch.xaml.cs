@@ -9,9 +9,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Diamond.WpfApp.UI.CustomerUI
 {
-    /// <summary>
-    /// Interaction logic for wProductCategorySearch.xaml
-    /// </summary>
     public partial class wCustomerSearch : Window
 	{
 		private readonly CustomerBusiness _business;

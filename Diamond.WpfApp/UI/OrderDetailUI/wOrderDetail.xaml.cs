@@ -43,6 +43,7 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 
                     var result = await _business.Save(orderdetail);
                     MessageBox.Show(result.Message, "Save");
+                    LoadGrdOrderdetail();
                 }
                 else // cai tien: ton tai thi update
                 {

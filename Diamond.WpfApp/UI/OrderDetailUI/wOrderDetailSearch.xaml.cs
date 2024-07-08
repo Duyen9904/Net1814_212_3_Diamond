@@ -39,8 +39,6 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
                     Note = txtNote.Text
                 };
 
-
-                //var result = await _business.SearchByFields(categoryId, name, description, iconUrl, promotionImageUrl, promotionalTagline, careInstructions, maximumPrice, minimumPrice);
                 var result = await _business.SearchByFields(orderdetail);
 				MessageBox.Show(result.Message, "Save");
 
@@ -73,7 +71,7 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 
 			if (!string.IsNullOrEmpty(orderdetailid))
 			{
-				var result = MessageBox.Show("Are you sure you want to delete this category?", "Confirm Delete", MessageBoxButton.YesNo);
+				var result = MessageBox.Show("Are you sure you want to delete this order detail?", "Confirm Delete", MessageBoxButton.YesNo);
 				if (result == MessageBoxResult.Yes)
 				{
 					try
@@ -118,6 +116,22 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
 		{
+            if (string.IsNullOrEmpty(txtOrderDetailId.Text) &&
+                 string.IsNullOrEmpty(txtOrderId.Text) &&
+                 string.IsNullOrEmpty(txtShellId.Text) &&
+                 string.IsNullOrEmpty(txtSubDiamondId.Text) &&
+                 string.IsNullOrEmpty(txtMainDiamondId.Text) &&
+                 string.IsNullOrEmpty(txtLineTotal.Text) &&
+                 string.IsNullOrEmpty(txtQuantity.Text) &&
+                 string.IsNullOrEmpty(txtUnitWeight.Text) &&
+                 string.IsNullOrEmpty(txtUnitPrice.Text) &&
+                 string.IsNullOrEmpty(txtDiscountPercentage.Text) &&
+                 string.IsNullOrEmpty(txtNote.Text))
+            {
+                MessageBox.Show("Nothing to clear", "Info");
+                return;
+            }
+
             txtOrderDetailId.Text = string.Empty;
             txtOrderId.Text = string.Empty;
             txtShellId.Text = string.Empty;
@@ -130,7 +144,7 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
             txtDiscountPercentage.Text = string.Empty;
             txtNote.Text = string.Empty;
 
-			LoadGrdOrderDetail();
+            LoadGrdOrderDetail();
         }
 
         private async void ButtonUpdate_Click(object sender, RoutedEventArgs e)
@@ -189,11 +203,11 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 		private async void grdOrderDetail_ButtonReport_Click(object sender, RoutedEventArgs e)
 		{
 			var button = sender as Button;
-			var categoryId = button.CommandParameter.ToString();
+			var orderDetailID = button.CommandParameter.ToString();
 
-			if (!string.IsNullOrEmpty(categoryId))
+			if (!string.IsNullOrEmpty(orderDetailID))
 			{
-				var report = new wOrderDetailReport(categoryId);
+				var report = new wOrderDetailReport(orderDetailID);
 				report.Owner = this;
 				report.Show();
 			}
