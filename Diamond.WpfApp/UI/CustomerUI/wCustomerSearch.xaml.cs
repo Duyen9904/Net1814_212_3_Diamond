@@ -1,7 +1,11 @@
-﻿using System.Windows;
+﻿using System.Diagnostics.Metrics;
+using System.Net;
+using System.Windows;
 using System.Windows.Controls;
 using Diamond.Business;
 using Diamond.Data.Models;
+using DiamondShop.WpfApp.UI.CustomerUI;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Diamond.WpfApp.UI.CustomerUI
 {
@@ -24,18 +28,19 @@ namespace Diamond.WpfApp.UI.CustomerUI
 			{
 
 				var customer = new Customer()
-				{
-					CustomerId = CustomerId.Text,
-					Email = Email.Text,
-					FirstName = FirstName.Text,
-					LastName = LastName.Text,
-					Address = Address.Text,
-					PhoneNumber = PhoneNumber.Text,
-					DateOfBirth = DateTime.Parse(DateOfBirth.Text),
+                {
+
+                    CustomerId = string.IsNullOrEmpty(CustomerId.Text.Trim()) ? null : CustomerId.Text,
+                    Email = string.IsNullOrEmpty(Email.Text.Trim()) ? null : Email.Text,
+                    FirstName = string.IsNullOrEmpty(FirstName.Text.Trim()) ? null : FirstName.Text,
+                    LastName = string.IsNullOrEmpty(LastName.Text.Trim()) ? null : LastName.Text,
+                    Address = string.IsNullOrEmpty(Address.Text.Trim()) ? null : Address.Text,
+                    PhoneNumber = string.IsNullOrEmpty(PhoneNumber.Text.Trim()) ? null : PhoneNumber.Text,
+                    DateOfBirth = string.IsNullOrEmpty(DateOfBirth.Text.Trim()) ? (DateTime?)null : DateTime.Parse(DateOfBirth.Text),
                     IsActive = IsActive.IsChecked == true,
-                    Country = Country.Text,
-					Gender = Gender.Text
-				};
+                    Country = string.IsNullOrEmpty(Country.Text.Trim()) ? null : Country.Text,
+                    Gender = string.IsNullOrEmpty(Gender.Text.Trim()) ? null : Gender.Text
+                };
 
 
 				//var result = await _business.SearchByFields(categoryId, name, description, iconUrl, promotionImageUrl, promotionalTagline, careInstructions, maximumPrice, minimumPrice);
@@ -63,6 +68,24 @@ namespace Diamond.WpfApp.UI.CustomerUI
 			}
 		}
 
+		private async void ButtonAddNew_Click(object sender, RoutedEventArgs e)
+		{
+            var customerWindow = Application.Current.Windows
+        .OfType<wCustomer>()
+        .FirstOrDefault();
+
+            if (customerWindow == null)
+            {
+                customerWindow = new wCustomer();
+                customerWindow.Show();
+            }
+            else
+            {
+                customerWindow.Activate();
+            }
+
+            this.Close(); // Close the current window
+        }
 		private async void grdCustomer_ButtonDelete_Click(object sender, RoutedEventArgs e)
 		{
 			var button = sender as Button;
@@ -102,8 +125,34 @@ namespace Diamond.WpfApp.UI.CustomerUI
 
 		private void ButtonCancel_Click(object sender, RoutedEventArgs e)
 		{
-			this.Close();
-		}
+            if (string.IsNullOrEmpty(CustomerId.Text) &&
+                 string.IsNullOrEmpty(Email.Text) &&
+                 string.IsNullOrEmpty(FirstName.Text) &&
+                 string.IsNullOrEmpty(LastName.Text) &&
+                 string.IsNullOrEmpty(Address.Text) &&
+                 string.IsNullOrEmpty(PhoneNumber.Text) &&
+                 string.IsNullOrEmpty(DateOfBirth.Text) &&
+                 string.IsNullOrEmpty(Gender.Text) &&
+                 IsActive.IsChecked == false &&
+                 string.IsNullOrEmpty(Country.Text))
+            {
+                MessageBox.Show("Nothing to clear", "Info");
+                return;
+            }
+
+            CustomerId.Text = "";
+            Email.Text = "";
+            FirstName.Text = "";
+            LastName.Text = "";
+            Address.Text = "";
+            PhoneNumber.Text = "";
+            DateOfBirth.Text = "";
+            Gender.Text = "";
+            IsActive.IsChecked = false;
+            Country.Text = "";
+
+            LoadGrdCustomer();
+        }
 
 		private async void ButtonUpdate_Click(object sender, RoutedEventArgs e)
 		{
@@ -124,6 +173,8 @@ namespace Diamond.WpfApp.UI.CustomerUI
 				MessageBox.Show(ex.ToString(), "Error");
 			}
 		}
+
+
 
 		private void grdCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{

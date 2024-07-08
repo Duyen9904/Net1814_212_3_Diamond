@@ -108,6 +108,22 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(txtOrderDetailId.Text) &&
+                string.IsNullOrEmpty(txtOrderId.Text) &&
+                string.IsNullOrEmpty(txtShellId.Text) &&
+                string.IsNullOrEmpty(txtSubDiamondId.Text) &&
+                string.IsNullOrEmpty(txtMainDiamondId.Text) &&
+                string.IsNullOrEmpty(txtLineTotal.Text) &&
+                string.IsNullOrEmpty(txtQuantity.Text) &&
+                string.IsNullOrEmpty(txtUnitWeight.Text) &&
+                string.IsNullOrEmpty(txtUnitPrice.Text) &&
+                string.IsNullOrEmpty(txtDiscountPercentage.Text) &&
+                string.IsNullOrEmpty(txtNote.Text))
+            {
+                MessageBox.Show("Nothing to clear", "Info");
+                return;
+            }
+
             txtOrderDetailId.Text = string.Empty;
             txtOrderId.Text = string.Empty;
             txtShellId.Text = string.Empty;
@@ -122,6 +138,7 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 
             LoadGrdOrderdetail();
         }
+
 
         //private async void ButtonUpdate_Click(object sender, RoutedEventArgs e)
         //{
@@ -205,9 +222,18 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 
         private async void grdOrderdetail_ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
-            var search = new wOrderDetailSearch();
-            search.Owner = this;
-            search.Show();
+            var orderDetailSearchWindow = Application.Current.Windows.OfType<wOrderDetailSearch>().FirstOrDefault();
+            if (orderDetailSearchWindow == null)
+            {
+                orderDetailSearchWindow = new wOrderDetailSearch();
+                //orderDetailSearchWindow.Owner = this;
+                orderDetailSearchWindow.Show();
+            }
+            else
+            {
+                orderDetailSearchWindow.Activate();
+            }
+            this.Close();
         }
 
         private async void grdOrderdetail_MouseDouble_Click(object sender, RoutedEventArgs e)

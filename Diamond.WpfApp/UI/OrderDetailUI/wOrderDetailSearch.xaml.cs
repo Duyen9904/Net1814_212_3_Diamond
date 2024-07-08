@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using Diamond.Business;
 using Diamond.Data.Models;
+using DiamondShop.WpfApp.UI.CustomerUI;
 
 namespace Diamond.WpfApp.UI.OrderDetailUI
 {
@@ -23,24 +24,24 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 			try
 			{
 
-				var orderdetail = new Orderdetail()
-				{
+                var orderdetail = new Orderdetail()
+                {
                     OrderDetailId = txtOrderDetailId.Text,
                     OrderId = txtOrderId.Text,
                     ShellId = txtShellId.Text,
                     SubDiamondId = txtSubDiamondId.Text,
                     MainDiamondId = txtMainDiamondId.Text,
-                    LineTotal = decimal.Parse(txtLineTotal.Text),
-                    Quantity = int.Parse(txtQuantity.Text),
-                    UnitWeight = decimal.Parse(txtUnitWeight.Text),
-                    UnitPrice = decimal.Parse(txtUnitPrice.Text),
-                    DiscountPercentage = decimal.Parse(txtDiscountPercentage.Text),
+                    LineTotal = string.IsNullOrWhiteSpace(txtLineTotal.Text) ? 0 : decimal.TryParse(txtLineTotal.Text, out decimal lineTotal) ? lineTotal : throw new FormatException("Invalid LineTotal format."),
+                    Quantity = string.IsNullOrWhiteSpace(txtQuantity.Text) ? 0 : int.TryParse(txtQuantity.Text, out int quantity) ? quantity : throw new FormatException("Invalid Quantity format."),
+                    UnitWeight = string.IsNullOrWhiteSpace(txtUnitWeight.Text) ? 0 : decimal.TryParse(txtUnitWeight.Text, out decimal unitWeight) ? unitWeight : throw new FormatException("Invalid UnitWeight format."),
+                    UnitPrice = string.IsNullOrWhiteSpace(txtUnitPrice.Text) ? 0 : decimal.TryParse(txtUnitPrice.Text, out decimal unitPrice) ? unitPrice : throw new FormatException("Invalid UnitPrice format."),
+                    DiscountPercentage = string.IsNullOrWhiteSpace(txtDiscountPercentage.Text) ? 0 : decimal.TryParse(txtDiscountPercentage.Text, out decimal discountPercentage) ? discountPercentage : throw new FormatException("Invalid DiscountPercentage format."),
                     Note = txtNote.Text
                 };
 
 
-				//var result = await _business.SearchByFields(categoryId, name, description, iconUrl, promotionImageUrl, promotionalTagline, careInstructions, maximumPrice, minimumPrice);
-				var result = await _business.SearchByFields(orderdetail);
+                //var result = await _business.SearchByFields(categoryId, name, description, iconUrl, promotionImageUrl, promotionalTagline, careInstructions, maximumPrice, minimumPrice);
+                var result = await _business.SearchByFields(orderdetail);
 				MessageBox.Show(result.Message, "Save");
 
 				this.LoadGrdOrderDetail(result.Data as List<Orderdetail>);
@@ -100,12 +101,37 @@ namespace Diamond.WpfApp.UI.OrderDetailUI
 				var item = await _business.GetById(orderDetailId);
 			}
 		}
-
-
-		private void ButtonCancel_Click(object sender, RoutedEventArgs e)
-		{
+        private async void ButtonAddNew_Click(object sender, RoutedEventArgs e)
+        {
+            var orderDetailWindow = Application.Current.Windows.OfType<wOrderDetail>().FirstOrDefault();
+			if (orderDetailWindow == null)
+			{
+				orderDetailWindow = new wOrderDetail();
+				orderDetailWindow.Show();
+			}
+			else
+			{
+				orderDetailWindow.Activate();
+			}
 			this.Close();
-		}
+        }
+
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+		{
+            txtOrderDetailId.Text = string.Empty;
+            txtOrderId.Text = string.Empty;
+            txtShellId.Text = string.Empty;
+            txtSubDiamondId.Text = string.Empty;
+            txtMainDiamondId.Text = string.Empty;
+            txtLineTotal.Text = string.Empty;
+            txtQuantity.Text = string.Empty;
+            txtUnitWeight.Text = string.Empty;
+            txtUnitPrice.Text = string.Empty;
+            txtDiscountPercentage.Text = string.Empty;
+            txtNote.Text = string.Empty;
+
+			LoadGrdOrderDetail();
+        }
 
         private async void ButtonUpdate_Click(object sender, RoutedEventArgs e)
         {

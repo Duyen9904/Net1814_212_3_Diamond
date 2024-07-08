@@ -1,8 +1,11 @@
 ﻿using Diamond.Business;
 using Diamond.Data.Models;
 using Diamond.WpfApp.UI.CustomerUI;
+using System.Diagnostics.Metrics;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 
 namespace DiamondShop.WpfApp.UI.CustomerUI
@@ -142,6 +145,21 @@ namespace DiamondShop.WpfApp.UI.CustomerUI
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(CustomerId.Text) &&
+                string.IsNullOrEmpty(Email.Text) &&
+                string.IsNullOrEmpty(FirstName.Text) &&
+                string.IsNullOrEmpty(LastName.Text) &&
+                string.IsNullOrEmpty(Address.Text) &&
+                string.IsNullOrEmpty(PhoneNumber.Text) &&
+                string.IsNullOrEmpty(DateOfBirth.Text) &&
+                string.IsNullOrEmpty(Gender.Text) &&
+                IsActive.IsChecked == false &&
+                string.IsNullOrEmpty(Country.Text))
+            {
+                MessageBox.Show("Nothing to clear", "Info");
+                return;
+            }
+
             CustomerId.Text = "";
             Email.Text = "";
             FirstName.Text = "";
@@ -149,12 +167,13 @@ namespace DiamondShop.WpfApp.UI.CustomerUI
             Address.Text = "";
             PhoneNumber.Text = "";
             DateOfBirth.Text = "";
-            Gender.AcceptsReturn = false;
+            Gender.Text = "";
             IsActive.IsChecked = false;
             Country.Text = "";
 
             LoadGrdCustomer();
         }
+
 
         private async void ButtonUpdate_Click(object sender, RoutedEventArgs e)
         {
@@ -213,9 +232,21 @@ namespace DiamondShop.WpfApp.UI.CustomerUI
 
         private async void grdCustomer_ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
-            var search = new wCustomerSearch();
-            search.Owner = this;
-            search.Show();
+            var customerSearchWindow = Application.Current.Windows
+        .OfType<wCustomerSearch>()
+        .FirstOrDefault();
+
+    if (customerSearchWindow == null)
+    {
+        customerSearchWindow = new wCustomerSearch();
+        customerSearchWindow.Show();
+    }
+    else
+    {
+        customerSearchWindow.Activate();
+    }
+
+    this.Close(); // Close the current window
         }
 
         private async void grdCustomer_MouseDouble_Click(object sender, RoutedEventArgs e)

@@ -114,7 +114,7 @@ Command="{Binding SaveCommand}" Click="grdOrderdetail_ButtonSearch_Click" Backgr
                         <DataGridTemplateColumn Width="50">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Background="CadetBlue" Foreground="White" Content="View" x:Name="ButtonReport" CommandParameter="{Binding Path=OrderDetailId}" Click="grdOrderdetail_ButtonReport_Click"/>
+                                    <Button Background="CadetBlue" Foreground="White" Content="Report" x:Name="ButtonReport" CommandParameter="{Binding Path=OrderDetailId}" Click="grdOrderdetail_ButtonReport_Click"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

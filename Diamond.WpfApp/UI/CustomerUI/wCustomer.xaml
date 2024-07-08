@@ -110,7 +110,7 @@ Command="{Binding SaveCommand}" Click="grdCustomer_ButtonSearch_Click" Backgroun
                         <DataGridTemplateColumn Width="50">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Background="CadetBlue" Foreground="White" Content="View" x:Name="ButtonReport" CommandParameter="{Binding Path=CustomerId}" Click="grdCustomer_ButtonReport_Click"/>
+                                    <Button Background="CadetBlue" Foreground="White" Content="Report" x:Name="ButtonReport" CommandParameter="{Binding Path=CustomerId}" Click="grdCustomer_ButtonReport_Click"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

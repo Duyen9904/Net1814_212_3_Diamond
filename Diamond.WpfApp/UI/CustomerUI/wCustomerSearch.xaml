@@ -61,10 +61,12 @@
                 </Grid>
             </GroupBox>
             <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="ButtonSearch" Content="Search" Height="30" Width="80" 
-                Command="{Binding SaveCommand}" Click="ButtonSearch_Click" Background="Green" Foreground="White" />
+                <Button x:Name="ButtonAdd" Content="Add" Height="30" Width="80" 
+                Command="{Binding SaveCommand}" Click="ButtonAddNew_Click" Background="#FF2E3687" Foreground="White" />
                 <Button x:Name="ButtonCancel" Content="Cancel" Height="30" Width="80" 
                 Command="{Binding ResetCommand}" Margin="5,0,10,0" Click="ButtonCancel_Click" RenderTransformOrigin="0.718,10.343"/>
+                <Button x:Name="ButtonSearch_Copy" Content="Search" Height="30" Width="80" 
+                    Command="{Binding SaveCommand}" Click="ButtonSearch_Click" Background="Green" Foreground="White" />
             </StackPanel>
             <StackPanel Height="310">
                 <DataGrid x:Name="grdCustomer" AutoGenerateColumns="False" ItemsSource="{Binding Customer}" 
@@ -94,7 +96,7 @@
                         <DataGridTemplateColumn Width="50">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Background="CadetBlue" Foreground="White" Content="View" x:Name="ButtonReport" CommandParameter="{Binding Path=CustomerId}" Click="grdCustomer_ButtonReport_Click"/>
+                                    <Button Background="CadetBlue" Foreground="White" Content="Report" x:Name="ButtonReport" CommandParameter="{Binding Path=CustomerId}" Click="grdCustomer_ButtonReport_Click"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
