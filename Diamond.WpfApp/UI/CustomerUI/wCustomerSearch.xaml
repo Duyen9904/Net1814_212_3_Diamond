@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Diamond.WpfApp.UI"
+        xmlns:local="clr-namespace:Diamond.WpfApp.UI.CustomerUI"
         mc:Ignorable="d"
         Title="Customer" Height="450" Width="1220">
     <Window.Resources>
@@ -41,7 +41,7 @@
                     <Label Content="FirstName" Grid.Column="4" Grid.Row="0" HorizontalContentAlignment="Right"  VerticalContentAlignment="Center" Width="120"/>
                     <TextBox Grid.Row="0" Grid.Column="5" x:Name="FirstName" Height="25" Text="{Binding Path=Customer.FirstName, Mode=TwoWay}" Margin="5" Width="160" HorizontalAlignment="Left"/>
 					<Label Content="IsActive" Grid.Column="6" Grid.Row="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="120"/>
-                    <CheckBox Content="Is Active" Grid.Row="0" Grid.Column="7" x:Name="IsActive" Height="25" Margin="5" Width="50" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsChecked="{Binding Path=Customer.IsActive, Mode=TwoWay}"/>
+                    <CheckBox Grid.Row="0" Grid.Column="7" x:Name="IsActive" Height="25" Margin="5" Width="50" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsChecked="{Binding Path=Customer.IsActive, Mode=TwoWay}"/>
 
                     <!-- Row 1 -->
                     <Label Content="LastName" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Right"  Width="120"  VerticalContentAlignment="Center"/>
@@ -87,7 +87,7 @@
                         <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}" Width="120" />
                         <DataGridTextColumn Header="LastName" Binding="{Binding LastName}" Width="70" />
                         <DataGridTextColumn Header="PhoneNumber" Binding="{Binding PhoneNumber}" Width="120" />
-                        <DataGridTextColumn Header="IsAsctive" Binding="{Binding IsAsctive}" Width="120" />
+                        <DataGridTextColumn Header="IsActive" Binding="{Binding IsActive}" Width="120" />
                         <DataGridTextColumn Header="DateOfBirth" Binding="{Binding DateOfBirth}" Width="120" />
                         <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" Width="70" />
                         <DataGridTextColumn Header="Address" Binding="{Binding Address}" Width="120" />

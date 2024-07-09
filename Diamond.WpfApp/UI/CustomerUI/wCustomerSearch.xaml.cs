@@ -27,16 +27,16 @@ namespace Diamond.WpfApp.UI.CustomerUI
 				var customer = new Customer()
                 {
 
-                    CustomerId = string.IsNullOrEmpty(CustomerId.Text.Trim()) ? null : CustomerId.Text,
-                    Email = string.IsNullOrEmpty(Email.Text.Trim()) ? null : Email.Text,
-                    FirstName = string.IsNullOrEmpty(FirstName.Text.Trim()) ? null : FirstName.Text,
-                    LastName = string.IsNullOrEmpty(LastName.Text.Trim()) ? null : LastName.Text,
-                    Address = string.IsNullOrEmpty(Address.Text.Trim()) ? null : Address.Text,
-                    PhoneNumber = string.IsNullOrEmpty(PhoneNumber.Text.Trim()) ? null : PhoneNumber.Text,
+                    CustomerId = CustomerId.Text,
+                    Email = Email.Text,
+                    FirstName = FirstName.Text,
+                    LastName = LastName.Text,
+                    Address = Address.Text,
+                    PhoneNumber = PhoneNumber.Text,
                     DateOfBirth = string.IsNullOrEmpty(DateOfBirth.Text.Trim()) ? (DateTime?)null : DateTime.Parse(DateOfBirth.Text),
                     IsActive = IsActive.IsChecked == true,
-                    Country = string.IsNullOrEmpty(Country.Text.Trim()) ? null : Country.Text,
-                    Gender = string.IsNullOrEmpty(Gender.Text.Trim()) ? null : Gender.Text
+                    Country = Country.Text,
+                    Gender = Gender.Text
                 };
 
 
